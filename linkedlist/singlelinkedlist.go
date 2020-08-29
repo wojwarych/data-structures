@@ -13,10 +13,6 @@ type SingleLinkedList struct {
 	size int
 }
 
-func NewSingleLinkedList() SingleLinkedList {
-	return SingleLinkedList{nil, 0}
-}
-
 // GetHead() returns pointer to the head of SingleLinkedList
 func (ll SingleLinkedList) GetHead() *Node {
 	return ll.head

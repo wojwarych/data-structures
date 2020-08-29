@@ -4,14 +4,7 @@ import "testing"
 
 var testSet = []int{3, 8, 10, -1, 55}
 
-func TestNewSingleLinkedList(t *testing.T) {
-	ll := NewSingleLinkedList()
-	if ll.Size() != 0 {
-		t.Errorf("Couldn't create empty list! Actual size: %d; Wanted: %d", ll.Size(), 0)
-	}
-}
-
-func TestAdd(t *testing.T) {
+func TestSingleListAdd(t *testing.T) {
 	tables := []struct {
 		input     []int
 		output    int
@@ -22,7 +15,7 @@ func TestAdd(t *testing.T) {
 		{[]int{2, 4, 8}, 3, 2},
 	}
 	for _, table := range tables {
-		ll := NewSingleLinkedList()
+		ll := &SingleLinkedList{}
 		for _, inp := range table.input {
 			ll.Add(inp)
 		}
@@ -35,8 +28,8 @@ func TestAdd(t *testing.T) {
 	}
 }
 
-func TestIsEmpty(t *testing.T) {
-	ll := NewSingleLinkedList()
+func TestSingleListIsEmpty(t *testing.T) {
+	ll := &SingleLinkedList{}
 	if emp := ll.IsEmpty(); emp == false {
 		t.Errorf("SingleLinkedList IsEmpty() returns wrong value! Is: %t; Wanted: %t", emp, true)
 	}
@@ -46,8 +39,8 @@ func TestIsEmpty(t *testing.T) {
 	}
 }
 
-func TestAddFirstSetsHead(t *testing.T) {
-	ll := NewSingleLinkedList()
+func TestSingleListAddFirstSetsHead(t *testing.T) {
+	ll := &SingleLinkedList{}
 	for _, v := range testSet {
 		ll.Add(v)
 	}
@@ -57,8 +50,8 @@ func TestAddFirstSetsHead(t *testing.T) {
 	}
 }
 
-func TestIndexOf(t *testing.T) {
-	ll := NewSingleLinkedList()
+func TestSingleListIndexOf(t *testing.T) {
+	ll := &SingleLinkedList{}
 	for _, v := range testSet {
 		ll.Add(v)
 	}
@@ -76,8 +69,8 @@ func TestIndexOf(t *testing.T) {
 	}
 }
 
-func TestAddLastAndRemoveLast(t *testing.T) {
-	ll := NewSingleLinkedList()
+func TestSingleListAddLastAndRemoveLast(t *testing.T) {
+	ll := &SingleLinkedList{}
 	for _, v := range testSet {
 		ll.Add(v)
 	}
@@ -92,15 +85,15 @@ func TestAddLastAndRemoveLast(t *testing.T) {
 		t.Errorf("SingleLinkedList RemoveLast() returns wrong value! Is: %d; Wants: %d", ret, expected)
 
 	}
-	ll = NewSingleLinkedList()
+	ll = &SingleLinkedList{}
 	ret, err = ll.RemoveLast()
 	if _, ok := err.(*ErrLinkedList); ret == -1 && !ok {
 		t.Errorf("RemoveLast() returned wrong error!")
 	}
 }
 
-func TestPeekFirst(t *testing.T) {
-	ll := NewSingleLinkedList()
+func TestSingleListPeekFirst(t *testing.T) {
+	ll := &SingleLinkedList{}
 	ret, err := ll.PeekFirst()
 	if _, ok := err.(*ErrLinkedList); !ok {
 		t.Errorf("PeekFirst() returned wrong error on empty list!")
@@ -113,8 +106,8 @@ func TestPeekFirst(t *testing.T) {
 	}
 }
 
-func TestClear(t *testing.T) {
-	ll := NewSingleLinkedList()
+func TestSingleListClear(t *testing.T) {
+	ll := &SingleLinkedList{}
 	for _, v := range testSet {
 		ll.Add(v)
 	}
@@ -124,8 +117,8 @@ func TestClear(t *testing.T) {
 	}
 }
 
-func TestAddAt(t *testing.T) {
-	ll := NewSingleLinkedList()
+func TestSingleListAddAt(t *testing.T) {
+	ll := &SingleLinkedList{}
 	for _, v := range testSet {
 		ll.Add(v)
 	}
@@ -148,8 +141,8 @@ func TestAddAt(t *testing.T) {
 	}
 }
 
-func TestRemoveFirst(t *testing.T) {
-	ll := NewSingleLinkedList()
+func TestSingleListRemoveFirst(t *testing.T) {
+	ll := &SingleLinkedList{}
 	ret, err := ll.RemoveFirst()
 	_, ok := err.(*ErrLinkedList)
 	if ret != -1 && !ok {
@@ -166,8 +159,8 @@ func TestRemoveFirst(t *testing.T) {
 	}
 }
 
-func TestGet(t *testing.T) {
-	ll := NewSingleLinkedList()
+func TestSingleListGet(t *testing.T) {
+	ll := &SingleLinkedList{}
 	ret, err := ll.Get(2)
 	_, ok := err.(*ErrLinkedList)
 	if ret != -1 && !ok {
@@ -187,8 +180,8 @@ func TestGet(t *testing.T) {
 	}
 }
 
-func TestSet(t *testing.T) {
-	ll := NewSingleLinkedList()
+func TestSingleListSet(t *testing.T) {
+	ll := &SingleLinkedList{}
 	val := 1024
 	for _, v := range []int{1, -2} {
 		ret, err := ll.Set(v, val)
