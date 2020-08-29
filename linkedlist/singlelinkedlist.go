@@ -1,3 +1,5 @@
+// Package linkedlist implement basic examples of data structure called Linked List
+
 package linkedlist
 
 import (
@@ -5,6 +7,7 @@ import (
 	"fmt"
 )
 
+// SingleLinkedList is struct implementing singly linked list
 type SingleLinkedList struct {
 	head *Node
 	size int
@@ -14,18 +17,22 @@ func NewSingleLinkedList() SingleLinkedList {
 	return SingleLinkedList{nil, 0}
 }
 
-func (ll *SingleLinkedList) GetHead() *Node {
+// GetHead() returns pointer to the head of SingleLinkedList
+func (ll SingleLinkedList) GetHead() *Node {
 	return ll.head
 }
 
-func (ll *SingleLinkedList) Size() int {
+// Size() return size of SingleLinkedList
+func (ll SingleLinkedList) Size() int {
 	return ll.size
 }
 
-func (ll *SingleLinkedList) IsEmpty() bool {
+// IsEmpty() returns boolean whetehr list is empty or not
+func (ll SingleLinkedList) IsEmpty() bool {
 	return ll.size == 0
 }
 
+// Add() adds new Node with integer value to the list
 func (ll *SingleLinkedList) Add(val int) {
 	if ll.IsEmpty() {
 		ll.AddFirst(val)
@@ -34,9 +41,9 @@ func (ll *SingleLinkedList) Add(val int) {
 	}
 }
 
+// AddFirst() adds new Node with integer value at the beginning of the list
 func (ll *SingleLinkedList) AddFirst(val int) {
-	newHead := new(Node)
-	newHead.SetVal(val)
+	newHead := &Node{val: val}
 	if ll.IsEmpty() {
 		ll.head = newHead
 	} else {
@@ -47,6 +54,7 @@ func (ll *SingleLinkedList) AddFirst(val int) {
 	ll.size += 1
 }
 
+// AddLast() adds new Node with integer value at the end of the list
 func (ll *SingleLinkedList) AddLast(val int) {
 	node := ll.head.next
 	prev := ll.head
@@ -54,15 +62,16 @@ func (ll *SingleLinkedList) AddLast(val int) {
 		prev = node
 		node = node.next
 	}
-	n := new(Node)
-	n.SetVal(val)
+	n := &Node{val: val}
 	prev.next = n
 	ll.size += 1
 }
 
+// AddAt() adds new Node with integer value at desired index
+// If index is out of bounds of list it returns an false value with error
 func (ll *SingleLinkedList) AddAt(idx, val int) (bool, error) {
 	if idx > ll.size || idx < 0 {
-		return false, errors.New("Index out of list bounds!")
+		return false, &ErrLinkedList{Err: errors.New("Index out of list bounds!")}
 	}
 	if idx == 0 {
 		ll.AddFirst(val)
@@ -71,9 +80,7 @@ func (ll *SingleLinkedList) AddAt(idx, val int) (bool, error) {
 	prev := ll.head
 	for i, node := 0, ll.head; node != nil; i++ {
 		if idx == i {
-			newNode := new(Node)
-			newNode.SetVal(val)
-			newNode.SetNext(node)
+			newNode := &Node{val: val, next: node}
 			prev.next = newNode
 			ll.size += 1
 			return true, nil
@@ -84,42 +91,49 @@ func (ll *SingleLinkedList) AddAt(idx, val int) (bool, error) {
 	return false, nil
 }
 
-func (ll *SingleLinkedList) Traverse() {
-	for node := ll.head; node != nil; {
-		fmt.Printf("%d\n", node.Peek())
+// String() iterates over nodes of list and formats them
+func (ll SingleLinkedList) String() string {
+	var ret string
+	for i, node := 0, ll.head; node != nil; i++ {
+		ret = ret + fmt.Sprintf("%d: %d\n", i, node.Peek())
 		node = node.next
 	}
+	return fmt.Sprintf("%s", ret)
 }
 
-// func (ll *SingleLinkedList) Get(idx int) (ret int, err error){
-//     if idx > ll.size {
-//         panic(err)
-//     }
-//     node := ll.head
-//     for i := 0; node != nil; i++ {
-//         if i == idx {
-//             return node.Peek(), nil
-//         }
-//         node = node.next
-//     }
-//     return nil, err
-// }
+// Get() returns value of Node on desired index if index is in bounds of list
+func (ll SingleLinkedList) Get(idx int) (ret int, err error) {
+	if idx > ll.size || idx < 0 {
+		return -1, &ErrLinkedList{Err: errors.New("Index out of list bounds!")}
+	}
+	node := ll.head
+	for i := 0; node != nil; i++ {
+		if i == idx {
+			return node.Peek(), nil
+		}
+		node = node.next
+	}
+	return -1, err
+}
 
-// func (ll *SingleLinkedList) Set(idx, val int) (ret int, err error) {
-//     if idx > ll.size {
-//         panic(err)
-//     }
-//     for i, node := 0, ll.head; node != nil; i++ {
-//         if i == idx {
-//             node.SetVal(val)
-//             return node.Peek(), nil
-//         }
-//         node = node.next
-//     }
-//     return nil, err
-// }
+// Set() updates value of a Node on a desired index if index is in bounds of list
+func (ll *SingleLinkedList) Set(idx, val int) (ret int, err error) {
+	if idx > ll.size || idx < 0 {
+		return -1, &ErrLinkedList{Err: errors.New("Index out of list bounds!")}
+	}
+	for i, node := 0, ll.head; node != nil; i++ {
+		if i == idx {
+			node.SetVal(val)
+			return node.Peek(), nil
+		}
+		node = node.next
+	}
+	return -1, errors.New("Undefined error!")
+}
 
-func (ll *SingleLinkedList) IndexOf(val int) int {
+// IndexOf() returns index of searched value
+// It returns -1 if value does not exist in list
+func (ll SingleLinkedList) IndexOf(val int) int {
 	for node, i := ll.head, 0; node != nil; i++ {
 		if node.Peek() == val {
 			return i
@@ -129,16 +143,29 @@ func (ll *SingleLinkedList) IndexOf(val int) int {
 	return -1
 }
 
-func (ll *SingleLinkedList) PeekFirst() (int, error) {
+// PeekFirst() returns value of head Node of list if list is not empty
+func (ll SingleLinkedList) PeekFirst() (int, error) {
 	if ll.IsEmpty() {
-		return -1, errors.New("List is empty! No value to show!")
+		return -1, &ErrLinkedList{errors.New("Empty list!"), " No value to show!"}
 	}
 	return ll.head.Peek(), nil
 }
 
+// RemoveFirst() removes head Node of list and sets new Node if list is not empty
+func (ll *SingleLinkedList) RemoveFirst() (int, error) {
+	if ll.IsEmpty() {
+		return -1, &ErrLinkedList{errors.New("List is empty!"), " Cannot delete any value!"}
+	}
+	data := ll.head.Peek()
+	ll.head = ll.head.next
+	ll.size -= 1
+	return data, nil
+}
+
+// RemoveLast() removes last Node of list if it is not empty
 func (ll *SingleLinkedList) RemoveLast() (int, error) {
 	if ll.IsEmpty() {
-		return -1, errors.New("Cannot delete any value! List is empty!")
+		return -1, &ErrLinkedList{errors.New("List is empty!"), " Cannot delete any value!"}
 	}
 	node := ll.head
 	prev := node
@@ -152,16 +179,7 @@ func (ll *SingleLinkedList) RemoveLast() (int, error) {
 	return data, nil
 }
 
-func (ll *SingleLinkedList) RemoveFirst() (int, error) {
-	if ll.IsEmpty() {
-		return -1, errors.New("Cannot delete any value! List is empty!")
-	}
-	data := ll.head.Peek()
-	ll.head = ll.head.next
-	ll.size -= 1
-	return data, nil
-}
-
+// Clear() deletes all Nodes from list
 func (ll *SingleLinkedList) Clear() {
 	for node := ll.head; node != nil; {
 		node = node.next
