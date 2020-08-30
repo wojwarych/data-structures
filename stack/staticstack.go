@@ -61,3 +61,11 @@ func (ss *StaticStack) Pop() (int, error) {
 	ss.size -= 1
 	return data, nil
 }
+
+// Peek() peeks value of top item in the stack
+func (ss StaticStack) Peek() (int, error) {
+	if ss.top == nil {
+		return -1, &ErrorStack{Err: errors.New("Cannot peek top item from stack!"), Cause: " DynamicStack is empty!"}
+	}
+	return ss.top.Peek(), nil
+}
