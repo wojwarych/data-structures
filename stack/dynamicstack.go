@@ -52,7 +52,7 @@ func (s *DynamicStack) Pop() (int, error) {
 }
 
 // Peek() peeks value of top item in the stack
-func (s *DynamicStack) Peek() (int, error) {
+func (s DynamicStack) Peek() (int, error) {
 	if s.top == nil {
 		return -1, &ErrorStack{Err: errors.New("Cannot peek top item from stack!"), Cause: " DynamicStack is empty!"}
 	}
