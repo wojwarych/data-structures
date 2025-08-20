@@ -5,46 +5,22 @@ Of course in Python lists are dynamic arrays but you might simulate the fixed si
 from collections.abc import Iterator
 from typing import TypeVar
 
+from src.linear_container import LinearContainer
+
 T = TypeVar("T")
 
 
-class ArrayQueue[T]:
+class ArrayQueue(LinearContainer[T]):
     DEFAULT_CAP = 5
+    DEFAULT_FULL_CONTAINER_MSG = "Queue is full!"
+    DEFAULT_EMPTY_CONTAINER_MSG = "Queue is empty!"
 
     def __init__(self, capacity: int = DEFAULT_CAP) -> None:
-        self._data: list[T | None] = [None] * capacity
-        self._capacity = capacity
-        self._count = 0
         self._front = 0
-        self._rear = 0
-
-    @property
-    def data(self) -> list[T | None]:
-        return self._data
-
-    @property
-    def capacity(self) -> int:
-        return self._capacity
-
-    @property
-    def count(self) -> int:
-        return self._count
+        super().__init__(capacity)
 
     def enqueue(self, item: T) -> None:
-        if self._count == self._capacity:
-            raise ValueError("Queue is full!")
-        self._data[self._rear % self._capacity] = item
-        self._rear += 1
-        self._count += 1
-
-    def top(self) -> T:
-        if self._count == 0:
-            raise ValueError("Empty queue!")
-
-        ret = self._data[self._front % self._capacity]
-        assert ret is not None
-
-        return ret
+        super().insert(item)
 
     def pop(self) -> T:
         if self._count == 0:
@@ -57,8 +33,3 @@ class ArrayQueue[T]:
         self._front += 1
         self._count -= 1
         return val
-
-    def traverse(self) -> Iterator[T]:
-        for item in range(self._front, self._rear):
-            if (val := self._data[item % self._capacity]) is not None:
-                yield val
