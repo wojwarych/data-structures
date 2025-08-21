@@ -16,18 +16,3 @@ class NaiveHashMap:
 
     def is_in(self, value: int) -> int:
         return self._hash[value]
-
-
-
-if __name__ == "__main__":
-    nhm = NaiveHashMap(12)
-
-    nhm.add(3)
-    nhm.add(3)
-    nhm.add(1)
-    nhm.add(2)
-
-    print(nhm.is_in(3))
-    print(nhm.is_in(1))
-    print(nhm.is_in(2))
-    print(nhm.is_in(10))
