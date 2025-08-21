@@ -4,7 +4,9 @@ Basic implementation of HashMap with collision mechanism implementend with linea
 
 
 class HashMap:
-    def __init__(self, hash_size: int  = 10) -> None:
+    HASH_SIZE = 10
+
+    def __init__(self, hash_size: int  = HASH_SIZE) -> None:
         self._hash_map: list[tuple[str, int] | None] = [None] * hash_size
 
     def __setitem__(self, key: str, value: int) -> None:
@@ -45,13 +47,3 @@ class HashMap:
 
     def get_hash(self, key: str) -> int:
         return sum(map(ord, key)) % 10
-
-
-
-if __name__ == "__main__":
-    hm = HashMap()
-
-    hm["foo"] = 10
-    hm["dfoo"] = 55
-    hm["test key"] = 666
-    print(hm["test key"])

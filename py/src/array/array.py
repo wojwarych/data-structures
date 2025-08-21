@@ -49,7 +49,7 @@ class DynamicArray:
             return val
         raise ValueError("Empty array!")
 
-    def remove_at(self, idx: int = None) -> int:
+    def remove_at(self, idx: int | None = None) -> int:
         if not idx:
             idx = self._length - 1
             return self.remove()

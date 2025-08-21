@@ -5,18 +5,19 @@ class CharacterNaiveHashMap:
         self._precompute(string)
 
     def _precompute(self, string: str) -> None:
+        if not self._is_ascii(string):
+            raise TypeError("Can only hash map ASCII characters!")
         for char in string:
             self.add(char)
 
+    def _is_ascii(self, string: str) -> bool:
+        return all(ord(c) < 128 for c in string)
+
     def add(self, char: str) -> None:
+        if not self._is_ascii(char):
+            raise TypeError("Can only hash map ASCII characters!")
         self._string += char
         self._hash[ord(char) - 97] += 1
 
-    def is_in(self, char: str) -> int:
-        return self._hash[ord(char) - 97]
-
-
-if __name__ == "__main__":
-    a_string ="justsomechars"
-    cnhm = CharacterNaiveHashMap(a_string)
-    print(cnhm.is_in("s"))
+    def is_in(self, char: str) -> bool:
+        return bool(self._hash[ord(char) - 97])

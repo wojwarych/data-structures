@@ -9,7 +9,3 @@ def bubble_sort(inp: list[int]) -> list[int]:
         if not swap:
             break
     return inp
-
-if __name__ == "__main__":
-    inp = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
-    print(bubble_sort(inp))

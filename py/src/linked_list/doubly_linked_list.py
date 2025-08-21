@@ -3,16 +3,16 @@ Implementation of doubly linked lists in Python
 """
 from typing import TypeVar
 
-from src.linked_list.node import Node
+from src.linked_list.node import NextPrevNode
 
 T = TypeVar("T")
 
 
 class DoublyLinkedList[T]:
     def __init__(self, value: T) -> None:
-        node = Node(value)
-        self._head = node
-        self._tail = node
+        node = NextPrevNode(value)
+        self._head: NextPrevNode[T] = node
+        self._tail: NextPrevNode[T] = node
 
     @property
     def head(self) -> T:
@@ -23,14 +23,14 @@ class DoublyLinkedList[T]:
         return self._tail.value
 
     def add_tail(self, value: T) -> None:
-        node = Node(value)
+        node = NextPrevNode(value)
         tail_node = self._tail
         tail_node.next = node
         node.prev = tail_node
         self._tail = node
 
     def add_head(self, value: T) -> None:
-        node = Node(value)
+        node = NextPrevNode(value)
         head_node = self._head
         head_node.prev = node
         node.next = head_node

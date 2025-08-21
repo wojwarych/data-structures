@@ -12,3 +12,20 @@ dev = [
     "pytest>=8.4.1",
     "pytest-cov>=6.2.1",
 ]
+
+[tool.pytest.ini_options]
+testpaths = [ "tests/" ]
+addopts = [ "--cov", "--cov-report=term-missing" ]
+required_plugins = [ "pytest-cov" ]
+minversion = "8.4.1"
+
+[tool.coverage.run]
+branch = true
+omit = [ "__init__" ]
+source = [ "src/" ]
+
+[tool.coverage.report]
+fail_under = 50
+omit = [ "__init__" ]
+show_missing = true
+skip_empty = true
