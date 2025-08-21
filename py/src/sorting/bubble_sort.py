@@ -1,11 +1,12 @@
-def bubble_sort(inp: list[int]) -> list[int]:
-    len_inp = len(inp)
-    for k in range(1, len_inp):
+def bubble_sort(input_list: list[int]) -> list[int]:
+    list_length = len(input_list)
+
+    for i in range(1, list_length):
         swap = 0
-        for i in range(len_inp - k):
-            if inp[i] > inp[i + 1]:
-                inp[i + 1], inp[i] = inp[i], inp[i + 1]
+        for j in range(list_length - i):
+            if input_list[j] > input_list[j + 1]:
+                input_list[j + 1], input_list[j] = input_list[j], input_list[j + 1]
                 swap += 1
         if not swap:
             break
-    return inp
+    return input_list

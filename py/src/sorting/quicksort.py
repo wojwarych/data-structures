@@ -3,7 +3,7 @@ import random
 import time
 
 
-def partition(arr: list[int], l: int, r: int) -> list[int]:
+def partition(arr: list[int], l: int, r: int) -> int:
     i = l - 1
     pivot = arr[r]
     for j in range(l, r):
@@ -14,9 +14,11 @@ def partition(arr: list[int], l: int, r: int) -> list[int]:
     return i + 1
 
 
-def quicksort(arr: list[int], l: int, r: int) -> list[int]:
+def quicksort(arr: list[int], l: int = 0, r: int | None = None) -> list[int]:
+    if r is None:
+        r = len(arr) - 1
     if l >= r:
-        return
+        return []
 
     p = partition(arr, l, r)
     quicksort(arr, l, p - 1)
@@ -28,6 +30,6 @@ if __name__ == "__main__":
     s = time.time()
     R = range(10000)
     arr = [random.choice(R) for _ in range(10000)]
-    print(quicksort(arr, 0, len(arr) - 1))
+    print(quicksort(arr))
     e = time.time() - s
     print(e)

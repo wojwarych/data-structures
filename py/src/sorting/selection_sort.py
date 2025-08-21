@@ -1,17 +1,9 @@
-import random
-
-
-def selection_sort(inp: list[int]) -> list[int]:
-    for i, _ in enumerate(inp):
+def selection_sort(input_list: list[int]) -> list[int]:
+    list_len = len(input_list)
+    for i in range(list_len):
         min_ = i
-        for j in range(i+1, len(inp)):
-            if inp[j] < inp[min_]:
+        for j in range(i + 1, len(input_list)):
+            if input_list[j] < input_list[min_]:
                 min_ = j
-        inp[i], inp[min_] = inp[min_], inp[i]
-    return inp
-
-
-if __name__ == "__main__":
-    R = range(1000)
-    r = [random.choice(R) for _ in range(1000)]
-    print(selection_sort(r))
+        input_list[i], input_list[min_] = input_list[min_], input_list[i]
+    return input_list

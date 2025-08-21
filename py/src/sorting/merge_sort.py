@@ -31,9 +31,3 @@ def _merge(l: list[int]):
 
 def merge_sort(inp: list[int]) -> list[int]:
     return _merge(inp)
-
-
-
-if __name__ == "__main__":
-    inp = [10, 9, 8, 7 , 6, 5, 4, 3, 2, 1]
-    print(merge_sort(inp))

@@ -1,6 +1,5 @@
 """Quicksort implementation with pivot picked randomly. Lomuto partition"""
 import random
-import time
 
 
 def partition(arr: list[int], l: int, r: int) -> int:
@@ -20,20 +19,13 @@ def partition_rand(arr: list[int], l: int, r: int) -> int:
     return partition(arr, l, r)
 
 
-def quicksort(arr: list[int], l: int, r: int) -> list[int]:
+def quicksort(arr: list[int], l: int = 0, r: int | None = None) -> list[int]:
+    if r is None:
+        r = len(arr) - 1
     if l >= r:
-        return
+        return []
 
     p = partition_rand(arr, l, r)
     quicksort(arr, l, p - 1)
     quicksort(arr, p + 1, r)
     return arr
-
-
-if __name__ == "__main__":
-    s = time.time()
-    R = range(10000)
-    arr = [random.choice(R) for _ in range(10000)]
-    print(quicksort(arr, 0, len(arr) - 1))
-    e = time.time() - s
-    print(e)
