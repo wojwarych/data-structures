@@ -1,21 +1,10 @@
-import random
-
-
-def insertion_sort(inp: list[int]) -> list[int]:
-    len_inp = len(inp)
-    for i in range(1, len_inp):
+def insertion_sort(input_list: list[int]) -> list[int]:
+    for i in range(1, len(input_list)):
+        val = input_list[i]
         j = i - 1
-        val = inp[i]
-        while j > -1 and inp[j] > val:
-            inp[j + 1] = inp[j]
+        while j > -1 and input_list[j] > val:
+            input_list[j + 1] = input_list[j]
             j -= 1
-        inp[j + 1] = val
-    return inp
+        input_list[j + 1] = val
 
-
-
-
-if __name__ == "__main__":
-    R = range(100)
-    r = [random.choice(R) for _ in range(5000)]
-    print(insertion_sort(r))
+    return input_list

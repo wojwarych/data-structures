@@ -1,46 +1,36 @@
 """Quicksort implementation with pivot picked by median of three. Hoare's partitioning"""
-import random
-import statistics
-import time
-
-
-def partition(arr: list[int], l: int, r: int) -> int:
+def partition(arr: list[int], l: int, r: int) -> int:  # type: ignore[return]
     i = l
     j = r
-    pivot = arr[l]
+    pivot = arr[r]
     while i < j:
-        while arr[i] <= pivot and i < j:
+        while arr[i] <= pivot:
             i += 1
         while arr[j] > pivot:
             j -= 1
-        if i < j:
-            arr[i], arr[j] = arr[j], arr[i]
-
-    arr[l], arr[j] = arr[j], arr[l]
-    return j
+        if i >= j:
+            return j
+        arr[i], arr[j] = arr[j], arr[i]
 
 
 def partition_median(arr: list[int], l: int, r: int) -> int:
-    m = statistics.median([arr[l], arr[r], arr[(r-l) // 2]])
-    idx = arr.index(m)
-    arr[idx], arr[l] = arr[r], arr[idx]
+    mid = (l + r) // 2
+    if arr[mid] < arr[l]:
+        arr[mid], arr[l] = arr[l], arr[mid]
+    if arr[r] < arr[l]:
+        arr[l], arr[r] = arr[r], arr[l]
+    if arr[mid] < arr[r]:
+        arr[mid], arr[r] = arr[r], arr[mid]
     return partition(arr, l, r)
 
 
-def quicksort(arr: list[int], l: int, r: int) -> list[int]:
+def quicksort(arr: list[int], l: int = 0, r: int | None = None) -> list[int]:
+    if r is None:
+        r = len(arr) - 1
     if l >= r:
-        return
+        return []
 
     p = partition_median(arr, l, r)
-    quicksort(arr, l, p - 1)
+    quicksort(arr, l, p)
     quicksort(arr, p + 1, r)
     return arr
-
-
-if __name__ == "__main__":
-    s = time.time()
-    R = range(100)
-    arr = [random.choice(R) for _ in range(10000)]
-    print(quicksort(arr, 0, len(arr) - 1))
-    e = time.time() - s
-    print(e)
