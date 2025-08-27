@@ -55,7 +55,7 @@ class Stack[T](Iterator):
     def pprint(self) -> None:
         node = self._head
         if node:
-            while node.next != None:
+            while node.next is None:
                 print("NODE: ", node.value)
                 node = node.next
             print("NODE: ", node.value)

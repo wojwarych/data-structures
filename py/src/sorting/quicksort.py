@@ -4,10 +4,10 @@ import random
 import time
 
 
-def partition(arr: list[int], l: int, r: int) -> int:
-    i = l - 1
+def partition(arr: list[int], left: int, r: int) -> int:
+    i = left - 1
     pivot = arr[r]
-    for j in range(l, r):
+    for j in range(left, r):
         if arr[j] < pivot:
             i += 1
             arr[i], arr[j] = arr[j], arr[i]
@@ -15,14 +15,14 @@ def partition(arr: list[int], l: int, r: int) -> int:
     return i + 1
 
 
-def quicksort(arr: list[int], l: int = 0, r: int | None = None) -> list[int]:
+def quicksort(arr: list[int], left: int = 0, r: int | None = None) -> list[int]:
     if r is None:
         r = len(arr) - 1
-    if l >= r:
+    if left >= r:
         return []
 
-    p = partition(arr, l, r)
-    quicksort(arr, l, p - 1)
+    p = partition(arr, left, r)
+    quicksort(arr, left, p - 1)
     quicksort(arr, p + 1, r)
     return arr
 

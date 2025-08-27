@@ -17,16 +17,16 @@ def _combine(sub_1: list[int], sub_2: list[int]):
     return ret
 
 
-def _merge(l: list[int]):
-    if len(l) <= 1:
-        return l
+def _merge(a_list: list[int]):
+    if len(a_list) <= 1:
+        return a_list
 
     start = 0
-    end = len(l)
+    end = len(a_list)
     mid = (end - start) // 2
 
-    sub_1 = _merge(l[start:mid])
-    sub_2 = _merge(l[mid:end])
+    sub_1 = _merge(a_list[start:mid])
+    sub_2 = _merge(a_list[mid:end])
     return _combine(sub_1, sub_2)
 
 

@@ -23,7 +23,7 @@ def test_char_naive_hash_map_char_not_in_string(a_string: str) -> None:
 def test_char_naive_hash_map_char_outside_ascii_raises_type_error() -> None:
     string = "zażółćgęśląjaźń"
     with pytest.raises(TypeError):
-        cnhm = CharacterNaiveHashMap(string)
+        CharacterNaiveHashMap(string)
 
 
 def test_add_char_to_existing_hash_map(a_string: str) -> None:
