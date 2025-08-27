@@ -1,0 +1,22 @@
+name: CI/CD pipeline
+
+jobs:
+  ci_cd:
+    name: testing
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: install uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.8.12"
+
+      - name: install the project
+        working-directory: ./py
+        run: uv sync --locked --all-extras --dev
+
+      - name: run tests
+        working-directory: ./py
+        run: uv run pytest
