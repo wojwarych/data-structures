@@ -83,4 +83,3 @@ def test_array_queue_traversal_iterates() -> None:
 
     for item in aq.traverse():
         assert item == expected_order.pop(0)
-

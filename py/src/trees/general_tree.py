@@ -1,4 +1,6 @@
 """Implementation of general tree with usage of Nodes and Linked Lists"""
+
+
 class LinkedList:
     def __init__(self) -> None:
         self._head = None
@@ -34,7 +36,6 @@ class TreeNode:
 
     def add_child(self, node: "TreeNode") -> None:
         self._children.add(node)
-
 
 
 if __name__ == "__main__":

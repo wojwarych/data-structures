@@ -2,7 +2,7 @@
 Implementing fixed-sized stack with "static" array
 Of course in Python lists are dynamic arrays but you might simulate the fixed size array.
 """
-from collections.abc import Iterator
+
 from typing import TypeVar
 
 from src.linear_container import LinearContainer

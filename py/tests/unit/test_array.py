@@ -30,7 +30,9 @@ def test_dynamic_array_add_data() -> None:
     assert da.length == 1
 
 
-def test_dynamic_array_add_data_over_bigger_arr(pre_populated_da: DynamicArray) -> None:
+def test_dynamic_array_add_data_over_bigger_arr(
+    pre_populated_da: DynamicArray,
+) -> None:
     pre_populated_da.add(80)
 
     assert pre_populated_da.length == 11
@@ -42,6 +44,7 @@ def test_dynamic_array_remove_raises_value_error_on_empty_array() -> None:
 
     with pytest.raises(ValueError):
         da.remove()
+
 
 def test_dynamic_array_remove_removes_last_item() -> None:
     da = DynamicArray()

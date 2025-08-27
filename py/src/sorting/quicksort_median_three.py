@@ -1,4 +1,6 @@
 """Quicksort implementation with pivot picked by median of three. Hoare's partitioning"""
+
+
 def partition(arr: list[int], l: int, r: int) -> int:  # type: ignore[return]
     i = l
     j = r

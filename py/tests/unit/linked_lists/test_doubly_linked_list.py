@@ -38,7 +38,9 @@ def test_doubly_linekd_list_remove_tail(dl: DoublyLinkedList[int]) -> None:
     assert ret == 11
 
 
-def test_doubly_linekd_list_remove_head_one_item(dl: DoublyLinkedList[int]) -> None:
+def test_doubly_linekd_list_remove_head_one_item(
+    dl: DoublyLinkedList[int],
+) -> None:
     ret = dl.remove_head()
 
     assert ret == 2

@@ -29,5 +29,6 @@ def _merge(l: list[int]):
     sub_2 = _merge(l[mid:end])
     return _combine(sub_1, sub_2)
 
+
 def merge_sort(inp: list[int]) -> list[int]:
     return _merge(inp)

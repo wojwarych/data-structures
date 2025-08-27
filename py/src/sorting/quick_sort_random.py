@@ -1,4 +1,5 @@
 """Quicksort implementation with pivot picked randomly. Lomuto partition"""
+
 import random
 
 

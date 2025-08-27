@@ -1,6 +1,7 @@
 """
 Implementation of doubly linked lists in Python
 """
+
 from typing import TypeVar
 
 from src.linked_list.node import NextPrevNode

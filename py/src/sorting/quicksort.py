@@ -1,4 +1,5 @@
 """Quicksort implementation with pivot picked as a last element. Lomuto partition"""
+
 import random
 import time
 

@@ -23,7 +23,6 @@ class Node[T]:
         self._next = next_
 
 
-
 class NextPrevNode[T](Node):
     def __init__(self, value: T) -> None:
         self._prev: NextPrevNode | None = None

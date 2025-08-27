@@ -1,7 +1,8 @@
 """
 Stack implementation in Python on a single linked list basis
 """
-from typing import TypeVar, Self
+
+from typing import TypeVar
 
 T = TypeVar("T")
 
@@ -78,6 +79,3 @@ if __name__ == "__main__":
                 results.append(False)
 
     print(results)
-
-
-
