@@ -26,6 +26,10 @@ jobs:
         working-directory: ./py
         run: uv sync --locked --all-extras --dev
 
+      - name: run formatter with check only
+        working-directory: ./py
+        run: uv run ruff format --check --dif
+
   linter:
     name: Run Ruff Linter
     runs-on: ubuntu-latest
@@ -49,7 +53,7 @@ jobs:
         run: uv sync --locked --all-extras --dev
 
       - name: run ruff linter
-        working-directory: .py
+        working-directory: ./py
         run: uv run ruff check ./src ./tests
 
   unit-tests:
