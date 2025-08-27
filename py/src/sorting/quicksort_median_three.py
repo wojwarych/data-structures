@@ -26,7 +26,9 @@ def partition_median(arr: list[int], left: int, r: int) -> int:
     return partition(arr, left, r)
 
 
-def quicksort(arr: list[int], left: int = 0, r: int | None = None) -> list[int]:
+def quicksort(
+    arr: list[int], left: int = 0, r: int | None = None
+) -> list[int]:
     if r is None:
         r = len(arr) - 1
     if left >= r:
