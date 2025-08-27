@@ -28,7 +28,7 @@ jobs:
 
       - name: run formatter with check only
         working-directory: ./py
-        run: uv run ruff format --check --dif
+        run: uv run ruff format --check --diff
 
   linter:
     name: Run Ruff Linter
