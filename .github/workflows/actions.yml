@@ -1,5 +1,8 @@
 name: CI/CD pipeline
 
+on: [pull_request]
+
+
 jobs:
   ci_cd:
     name: testing
