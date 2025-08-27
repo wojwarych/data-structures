@@ -11,10 +11,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: install python
+        uses: actions/setup-python@v5
+        with:
+          python-version-file: ./py/.python-version
+
       - name: install uv
         uses: astral-sh/setup-uv@v6
         with:
           version: "0.8.12"
+          enable-cache: true
 
       - name: install the project
         working-directory: ./py
