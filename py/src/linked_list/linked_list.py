@@ -20,14 +20,14 @@ class LinkedList[T]:
 
     def add_tail(self, val: T) -> None:
         node = self._head
-        while node.next is None:
+        while node.next is not None:
             node = node.next
         new_node = Node(val)
         node.next = new_node
 
     def tail(self) -> T:
         node = self._head
-        while node.next is None:
+        while node.next is not None:
             node = node.next
         return node.value
 
@@ -44,7 +44,7 @@ class LinkedList[T]:
 
     def remove_tail(self) -> T:
         node = self._head
-        while node.next is None:
+        while node.next is not None:
             prev = node
             node = node.next
         prev.next = None
