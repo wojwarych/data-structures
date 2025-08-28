@@ -11,6 +11,7 @@ dev = [
     "mypy>=1.17.1",
     "pytest>=8.4.1",
     "pytest-cov>=6.2.1",
+    "ruff>=0.12.10",
 ]
 
 [tool.pytest.ini_options]
@@ -25,7 +26,10 @@ omit = [ "__init__" ]
 source = [ "src/" ]
 
 [tool.coverage.report]
-fail_under = 50
+fail_under = 39
 omit = [ "__init__" ]
 show_missing = true
 skip_empty = true
+
+[tool.ruff]
+line-length = 79

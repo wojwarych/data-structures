@@ -28,8 +28,6 @@ class Node:
         self._right = _right
 
 
-
-
 def depth_first_traversal(root_node: Node) -> list[int]:
     stack = []
     stack.append(root_node)
@@ -46,12 +44,17 @@ def depth_first_traversal(root_node: Node) -> list[int]:
 
     return ret
 
+
 def depth_first_traversal_recursive(root_node: Node) -> list[int]:
     if not root_node:
         return []
-    return [
-        root_node.value,
-    ] + depth_first_traversal_recursive(root_node.left) + depth_first_traversal_recursive(root_node.right)
+    return (
+        [
+            root_node.value,
+        ]
+        + depth_first_traversal_recursive(root_node.left)
+        + depth_first_traversal_recursive(root_node.right)
+    )
 
 
 def breadth_first_traversal(root_node: Node) -> list[int]:
@@ -89,18 +92,25 @@ def depth_first_find_recursive(root_node: Node, find: str) -> bool:
         return False
     elif root_node.value == find:
         return True
-    return (depth_first_find_recursive(root_node.left, find) or depth_first_find_recursive(root_node.right, find))
+    return depth_first_find_recursive(
+        root_node.left, find
+    ) or depth_first_find_recursive(root_node.right, find)
 
 
 def depth_first_sum_recursive(root_node: Node) -> int:
     if root_node is None:
         return 0
-    return root_node.value + depth_first_sum_recursive(root_node.left) + depth_first_sum_recursive(root_node.right)
+    return (
+        root_node.value
+        + depth_first_sum_recursive(root_node.left)
+        + depth_first_sum_recursive(root_node.right)
+    )
+
 
 def depth_first_min_value_iteratively(root_node: Node) -> int:
     stack = []
     stack.append(root_node)
-    current = float('inf')
+    current = float("inf")
     while stack:
         node = stack.pop()
         if node.value < current:
@@ -112,17 +122,19 @@ def depth_first_min_value_iteratively(root_node: Node) -> int:
 
     return current
 
+
 def depth_first_min_value_recursively(root_node: Node) -> int:
     if root_node is None:
-        return float('inf')
+        return float("inf")
     left_val = depth_first_min_value_recursively(root_node.left)
     right_val = depth_first_min_value_recursively(root_node.right)
     node_val = root_node.value
     return min([node_val, left_val, right_val])
 
+
 def depth_first_max_root_to_leaf_path(root_node: Node) -> int:
     if root_node is None:
-        return float('-inf')
+        return float("-inf")
     if not root_node.left and not root_node.right:
         return root_node.value
     left_val = depth_first_max_root_to_leaf_path(root_node.left)

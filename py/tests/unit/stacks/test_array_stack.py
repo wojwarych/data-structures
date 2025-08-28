@@ -83,4 +83,3 @@ def test_array_stack_traversal_iterates() -> None:
 
     for item in array_stack.traverse():
         assert item == expected_order.pop(0)
-

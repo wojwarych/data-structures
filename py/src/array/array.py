@@ -9,6 +9,7 @@ that might change in the future)
 
 class DynamicArray:
     GROWTH_FACTOR = 1.5
+
     def __init__(self):
         self._data = []
         self._capacity = 0
@@ -60,7 +61,7 @@ class DynamicArray:
             val = self._data[pos]
             self._data[pos] = None
             start_idx = pos
-            for item in self._data[idx:self._length]:
+            for item in self._data[idx : self._length]:
                 self._data[start_idx] = item
                 self._data[start_idx + 1] = None
                 start_idx += 1

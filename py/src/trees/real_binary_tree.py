@@ -108,6 +108,7 @@ def build_tree(elements):
         root.add_child(i)
     return root
 
+
 if __name__ == "__main__":
     nums = [17, 2, 10, 99, 3, 5, -3, 24, 100]
     numbers_tree = build_tree(nums)

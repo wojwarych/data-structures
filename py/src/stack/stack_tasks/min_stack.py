@@ -1,4 +1,4 @@
-from typing import TypeVar, Self
+from typing import TypeVar
 
 
 T = TypeVar("T")
@@ -44,7 +44,7 @@ class Stack[T]:
     def pprint(self) -> None:
         node = self._head
         if node:
-            while node.next != None:
+            while node.next is None:
                 print("NODE: ", node.value)
                 node = node.next
             print("NODE: ", node.value)

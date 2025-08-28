@@ -5,7 +5,10 @@ def bubble_sort(input_list: list[int]) -> list[int]:
         swap = 0
         for j in range(list_length - i):
             if input_list[j] > input_list[j + 1]:
-                input_list[j + 1], input_list[j] = input_list[j], input_list[j + 1]
+                input_list[j + 1], input_list[j] = (
+                    input_list[j],
+                    input_list[j + 1],
+                )
                 swap += 1
         if not swap:
             break

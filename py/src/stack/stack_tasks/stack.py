@@ -1,6 +1,7 @@
 """
 Stack implementation in Python on a single linked list basis
 """
+
 from collections.abc import Iterator
 from typing import TypeVar, Self
 
@@ -54,7 +55,7 @@ class Stack[T](Iterator):
     def pprint(self) -> None:
         node = self._head
         if node:
-            while node.next != None:
+            while node.next is None:
                 print("NODE: ", node.value)
                 node = node.next
             print("NODE: ", node.value)

@@ -1,6 +1,7 @@
 """
 Implementation of doubly linked lists in Python
 """
+
 from typing import TypeVar
 
 from src.linked_list.node import NextPrevNode
@@ -57,14 +58,14 @@ class DoublyLinkedList[T]:
 
     def traverse(self) -> None:
         node = self._head
-        while node.next != None:
+        while node.next is None:
             print("NODE: ", node.value)
             node = node.next
         print("NODE: ", node.value)
 
     def reverse(self) -> None:
         node = self._tail
-        while node.prev != None:
+        while node.prev is None:
             print("NODE: ", node.value)
             node = node.prev
         print("NODE: ", node.value)

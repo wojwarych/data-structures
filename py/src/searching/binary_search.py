@@ -1,4 +1,6 @@
-def binary_search(arr: list[int], value: int, start: int = 0, end: int | None = None) -> int | None:
+def binary_search(
+    arr: list[int], value: int, start: int = 0, end: int | None = None
+) -> int | None:
     if end is None:
         end = len(arr) - 1
     if start > end:

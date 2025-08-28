@@ -12,16 +12,21 @@ def list_input() -> list[int]:
 
 
 @pytest.mark.parametrize("method", [binary_search, linear_search])
-def test_binary_search_returns_correct_item(method: Callable, list_input: list[int]) -> None:
+def test_binary_search_returns_correct_item(
+    method: Callable, list_input: list[int]
+) -> None:
     assert method(list_input, 99) == 99
 
 
 @pytest.mark.parametrize("method", [binary_search, linear_search])
-def test_binary_search_returns_correct_item_low_value(method: Callable, list_input: list[int]) -> None:
+def test_binary_search_returns_correct_item_low_value(
+    method: Callable, list_input: list[int]
+) -> None:
     assert method(list_input, -5) == -5
 
 
 @pytest.mark.parametrize("method", [binary_search, linear_search])
-def test_binary_search_returns_no_item(method: Callable, list_input: list[int]) -> None:
+def test_binary_search_returns_no_item(
+    method: Callable, list_input: list[int]
+) -> None:
     assert not method(list_input, 900)
-

@@ -25,7 +25,6 @@ class Node:
         self._right = _right
 
 
-
 def in_order_traversal(root_node: Node) -> list[str]:
     if root_node is None:
         return
@@ -33,12 +32,14 @@ def in_order_traversal(root_node: Node) -> list[str]:
     print(root_node.value)
     in_order_traversal(root_node.right)
 
+
 def pre_order_traversal(root_node: Node) -> list[str]:
     if root_node is None:
         return
     print(root_node.value)
     pre_order_traversal(root_node.left)
     pre_order_traversal(root_node.right)
+
 
 def post_order_traversal(root_node: Node) -> list[str]:
     if root_node is None:
@@ -49,12 +50,12 @@ def post_order_traversal(root_node: Node) -> list[str]:
 
 
 if __name__ == "__main__":
-    r = Node('a')
-    b = Node('b')
-    c = Node('c')
-    d = Node('d')
-    e = Node('e')
-    f = Node('f')
+    r = Node("a")
+    b = Node("b")
+    c = Node("c")
+    d = Node("d")
+    e = Node("e")
+    f = Node("f")
     r.left = b
     r.right = c
     b.left = d

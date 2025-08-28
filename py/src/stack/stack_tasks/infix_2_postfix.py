@@ -43,17 +43,9 @@ class Stack:
 
 if __name__ == "__main__":
     infix = "(a+b)/c*d-e"
-    bodmas = {
-        "^": 3,
-        "*": 2,
-        "/": 2,
-        "+": 1,
-        "-": 1,
-        "(": 0
-    }
+    bodmas = {"^": 3, "*": 2, "/": 2, "+": 1, "-": 1, "(": 0}
 
     def infix_2_postfix(infix: str):
-
         ans = ""
         stack = Stack()
 

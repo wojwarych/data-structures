@@ -1,9 +1,10 @@
 """
 Queue implementation in Python with usage of Doubly Linked List
 """
+
 from typing import TypeVar
 
-from src.linked_list import NextPrevNode, DoublyLinkedList
+from src.linked_list import DoublyLinkedList
 
 
 T = TypeVar("T")

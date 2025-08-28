@@ -1,6 +1,7 @@
 """
 Basic implementation of HashMap with collision mechanism implementend with linked lists
 """
+
 from src.linked_list import Node, LinkedList
 
 
@@ -22,11 +23,10 @@ class HashMapLinkedList(LinkedList[tuple[str, int]]):
         return ret
 
 
-
 class HashMap:
     HASH_SIZE = 10
 
-    def __init__(self, hash_size: int  = HASH_SIZE) -> None:
+    def __init__(self, hash_size: int = HASH_SIZE) -> None:
         self._hash_map: list[HashMapLinkedList | None] = [None] * hash_size
 
     def __setitem__(self, key: str, value: int) -> None:
