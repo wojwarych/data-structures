@@ -1,6 +1,6 @@
-from src.hash_tables.hash_map_collision import HashMap
-
 import pytest
+
+from src.hash_tables.hash_map_collision import HashMap
 
 
 @pytest.fixture

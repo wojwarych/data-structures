@@ -1,6 +1,6 @@
-from src.hash_tables.hash_map_collision_probing import HashMap
-
 import pytest
+
+from src.hash_tables.hash_map_collision_probing import HashMap
 
 
 def test_hash_map_basic_setup() -> None:

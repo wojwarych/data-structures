@@ -6,7 +6,6 @@ from typing import TypeVar
 
 from src.linked_list import DoublyLinkedList
 
-
 T = TypeVar("T")
 
 

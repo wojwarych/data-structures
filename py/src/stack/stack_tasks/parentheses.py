@@ -63,13 +63,14 @@ if __name__ == "__main__":
                 stack.push(char)
             elif char in ["}", "]", ")"]:
                 op_paren = stack.pop()
-                if char == "]" and op_paren != "[":
-                    results.append(False)
-                    break
-                elif char == "}" and op_paren != "{":
-                    results.append(False)
-                    break
-                elif char == ")" and op_paren != "(":
+                if (
+                    char == "]"
+                    and op_paren != "["
+                    or char == "}"
+                    and op_paren != "{"
+                    or char == ")"
+                    and op_paren != "("
+                ):
                     results.append(False)
                     break
         else:

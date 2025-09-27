@@ -1,8 +1,9 @@
 """
-Basic implementation of HashMap with collision mechanism implementend with linked lists
+Basic implementation of HashMap with collision mechanism
+implementend with linked lists
 """
 
-from src.linked_list import Node, LinkedList
+from src.linked_list import LinkedList, Node
 
 
 class HashMapLinkedList(LinkedList[tuple[str, int]]):

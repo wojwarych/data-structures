@@ -2,8 +2,8 @@ from collections.abc import Callable
 
 import pytest
 
-from src.sorting.quicksort import quicksort
 from src.sorting.quick_sort_random import quicksort as quicksort_random
+from src.sorting.quicksort import quicksort
 from src.sorting.quicksort_median_three import (
     quicksort as quicksort_median_three,
 )

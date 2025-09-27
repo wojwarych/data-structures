@@ -1,6 +1,6 @@
-from src.queues.array_queue import ArrayQueue
-
 import pytest
+
+from src.queues.array_queue import ArrayQueue
 
 
 def test_array_queue_empty_setup() -> None:

@@ -1,9 +1,9 @@
 from collections.abc import Callable
 
+import pytest
+
 from src.searching.binary_search import binary_search
 from src.searching.linear_search import linear_search
-
-import pytest
 
 
 @pytest.fixture
