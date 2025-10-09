@@ -1,6 +1,6 @@
-from src.array import DynamicArray
-
 import pytest
+
+from src.array import DynamicArray
 
 
 @pytest.fixture

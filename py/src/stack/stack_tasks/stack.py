@@ -3,7 +3,7 @@ Stack implementation in Python on a single linked list basis
 """
 
 from collections.abc import Iterator
-from typing import TypeVar, Self
+from typing import Self, TypeVar
 
 T = TypeVar("T")
 

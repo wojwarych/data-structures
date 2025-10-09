@@ -1,6 +1,6 @@
-from src import DoublyLinkedList
-
 import pytest
+
+from src import DoublyLinkedList
 
 
 @pytest.fixture

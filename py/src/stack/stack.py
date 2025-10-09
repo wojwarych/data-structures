@@ -3,6 +3,7 @@ Stack implementation in Python on a single linked list basis
 """
 
 from typing import TypeVar
+
 from src.linked_list import LinkedList
 
 T = TypeVar("T")

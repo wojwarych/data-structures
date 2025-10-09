@@ -1,5 +1,5 @@
 """
-Basic implementation of HashMap with collision mechanism implementend with linear probing
+Basic implementation of HashMap with collision mechanism implementend \w linear probing
 """
 
 
@@ -34,19 +34,13 @@ class HashMap:
         else:
             start_hash = hash_ + 1
             while start_hash < len(self._hash_map):
-                if (
-                    self._hash_map[start_hash]
-                    and self._hash_map[start_hash][0] == key
-                ):
+                if self._hash_map[start_hash] and self._hash_map[start_hash][0] == key:
                     return self._hash_map[start_hash][1]
                 start_hash += 1
 
             start_hash = 0
             while start_hash < hash_:
-                if (
-                    self._hash_map[start_hash]
-                    and self._hash_map[start_hash][0] == key
-                ):
+                if self._hash_map[start_hash] and self._hash_map[start_hash][0] == key:
                     return self._hash_map[start_hash][1]
                 start_hash += 1
         raise KeyError(f"Value with key: {key} not found!")

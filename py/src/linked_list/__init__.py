@@ -1,3 +1,4 @@
-from .linked_list import LinkedList as LinkedList
 from .doubly_linked_list import DoublyLinkedList as DoublyLinkedList
-from .node import Node as Node, NextPrevNode as NextPrevNode
+from .linked_list import LinkedList as LinkedList
+from .node import NextPrevNode as NextPrevNode
+from .node import Node as Node

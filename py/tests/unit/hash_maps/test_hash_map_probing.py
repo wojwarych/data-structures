@@ -1,6 +1,6 @@
-from src.hash_tables.hash_map_collision_probing import HashMap
-
 import pytest
+
+from src.hash_tables.hash_map_collision_probing import HashMap
 
 
 def test_hash_map_basic_setup() -> None:
@@ -37,9 +37,7 @@ def test_hash_map_set_item_get_item_non_existing_key() -> None:
         assert hm["xtest"]
 
 
-def test_hash_map_set_item_get_item_non_existing_key_collision_scenario() -> (
-    None
-):
+def test_hash_map_set_item_get_item_non_existing_key_collision_scenario() -> None:
     hm = HashMap()
     hm["a"] = 33
 
@@ -47,9 +45,7 @@ def test_hash_map_set_item_get_item_non_existing_key_collision_scenario() -> (
         assert hm["da"]
 
 
-def test_hash_map_set_item_get_item_probing_goes_to_end_of_hash_array() -> (
-    None
-):
+def test_hash_map_set_item_get_item_probing_goes_to_end_of_hash_array() -> None:
     hm = HashMap()
 
     hm["a"] = 33
@@ -61,9 +57,7 @@ def test_hash_map_set_item_get_item_probing_goes_to_end_of_hash_array() -> (
     assert hm["dda"] == 456
 
 
-def test_hash_map_set_item_get_item_probing_goes_to_beginning_of_array() -> (
-    None
-):
+def test_hash_map_set_item_get_item_probing_goes_to_beginning_of_array() -> None:
     hm = HashMap()
 
     hm["c"] = 33

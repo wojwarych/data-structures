@@ -1,6 +1,6 @@
-from src.hash_tables.character_hashing import CharacterNaiveHashMap
-
 import pytest
+
+from src.hash_tables.character_hashing import CharacterNaiveHashMap
 
 
 @pytest.fixture

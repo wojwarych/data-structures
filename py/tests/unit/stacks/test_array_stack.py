@@ -1,6 +1,6 @@
-from src.stack.array_stack import ArrayStack
-
 import pytest
+
+from src.stack.array_stack import ArrayStack
 
 
 def test_array_stack_empty_setup() -> None:
