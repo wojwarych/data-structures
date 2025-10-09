@@ -1,4 +1,7 @@
-"""Quicksort implementation with pivot picked by median of three. Hoare's partitioning"""
+"""
+Quicksort implementation with pivot picked by median of three.
+Hoare's partitioning
+"""
 
 
 def partition(arr: list[int], left: int, r: int) -> int:  # type: ignore[return]
@@ -26,9 +29,7 @@ def partition_median(arr: list[int], left: int, r: int) -> int:
     return partition(arr, left, r)
 
 
-def quicksort(
-    arr: list[int], left: int = 0, r: int | None = None
-) -> list[int]:
+def quicksort(arr: list[int], left: int = 0, r: int | None = None) -> list[int]:
     if r is None:
         r = len(arr) - 1
     if left >= r:

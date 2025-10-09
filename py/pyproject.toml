@@ -32,7 +32,7 @@ show_missing = true
 skip_empty = true
 
 [tool.ruff]
-line-length = 79
+line-length = 88
 
 [tool.ruff.lint]
 select = [

@@ -26,10 +26,7 @@ class DFSAdjacencyMatrix:
         order.append(start)
 
         for row_idx, _ in enumerate(self._matrix[start]):
-            if (
-                self._matrix[start][row_idx] == 1
-                and not self._visited[row_idx]
-            ):
+            if self._matrix[start][row_idx] == 1 and not self._visited[row_idx]:
                 order += self.run(row_idx)
         return order
 

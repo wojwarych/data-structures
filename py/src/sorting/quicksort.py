@@ -15,9 +15,7 @@ def partition(arr: list[int], left: int, r: int) -> int:
     return i + 1
 
 
-def quicksort(
-    arr: list[int], left: int = 0, r: int | None = None
-) -> list[int]:
+def quicksort(arr: list[int], left: int = 0, r: int | None = None) -> list[int]:
     if r is None:
         r = len(arr) - 1
     if left >= r:

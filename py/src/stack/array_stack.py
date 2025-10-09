@@ -1,6 +1,6 @@
 """
 Implementing fixed-sized stack with "static" array
-Of course in Python lists are dynamic arrays but you might simulate the fixed size array.
+Python lists are dynamic arrays but you might 'simulate' the fixed size array.
 """
 
 from typing import TypeVar
