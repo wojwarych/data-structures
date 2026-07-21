@@ -114,12 +114,12 @@ int dl_insert(DLList *dll, void *data) {
   return 0;
 }
 
-void *dl_find(DLList ll, void *data) {
-  Node node = *ll.head;
-  while (node.next) {
-    node = *node.next;
-    if (node.data == data) {
-      return node.data;
+Node *dl_find(DLList *ll, void *data) {
+  Node *node = ll->head;
+  while (node->next) {
+    node = node->next;
+    if (*(int *)node->data == *(int *)data) {
+      return node;
     }
   }
   return NULL;
@@ -129,6 +129,7 @@ int dl_delete(DLList *dll, void *data) {
   Node *node = dll->tail;
   Node *prev = dll->tail->prev;
   dll->tail = prev;
+  dll->tail->next = NULL;
   *(int *)data = *(int *)node->data;
   free(node);
   return 0;

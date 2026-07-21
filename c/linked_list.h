@@ -33,6 +33,6 @@ int delete(LList *, void *);
 DLList *dl_create(void *, ssize_t);
 void *dl_destroy(DLList *);
 void *dl_peek(DLList);
-void *dl_find(DLList, void *);
+Node *dl_find(DLList *, void *);
 int dl_insert(DLList *, void *);
 int dl_delete(DLList *, void *);
